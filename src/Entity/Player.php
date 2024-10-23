@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PlayerRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlayerRepository::class)]
@@ -24,6 +25,12 @@ class Player
 
     #[ORM\ManyToOne(inversedBy: 'players')]
     private ?Equipe $equipe = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $createdat = null;
+
+    #[ORM\Column]
+    private ?bool $avaible = null;
 
     public function getId(): ?int
     {
@@ -74,6 +81,30 @@ class Player
     public function setEquipe(?Equipe $equipe): static
     {
         $this->equipe = $equipe;
+
+        return $this;
+    }
+
+    public function getCreatedat(): ?\DateTimeInterface
+    {
+        return $this->createdat;
+    }
+
+    public function setCreatedat(?\DateTimeInterface $createdat): static
+    {
+        $this->createdat = $createdat;
+
+        return $this;
+    }
+
+    public function isAvaible(): ?bool
+    {
+        return $this->avaible;
+    }
+
+    public function setAvaible(bool $avaible): static
+    {
+        $this->avaible = $avaible;
 
         return $this;
     }

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+ 
+ 
+<h1> {{equipe.nom}}</h1>
+<h3> {{equipe.description}}</h3>
+
+<ul>
+   
+   {% for player in equipe.players %}
+    
+    {% if player.avaible %}
+         <li style="color: green;"   >{{player.nom}} - {{player.prenom}} - numéro {{player.numero}}</li>  
+    {% else %}
+ <li style="color: red;">{{player.nom}} - {{player.prenom}} - numéro {{player.numero}}</li>  
+    {% endif %}
+     
+
+   {% endfor %}
+
+</ul>
+
+
+{% endblock %}

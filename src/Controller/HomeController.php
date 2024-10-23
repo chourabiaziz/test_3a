@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')] //route pour mettre dans l url  "/home"
+    #[Route('', name: 'app_home')] //route pour mettre dans l url  "/home"
     public function index(): Response // nom fonction avec le type de son retour 
     {
         $message  = " Chourabi aziz " ; 

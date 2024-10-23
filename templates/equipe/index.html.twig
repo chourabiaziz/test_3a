@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PlayerController!{% endblock %}
+
+{% block body %}
+ 
+
+
+<table border="1" >
+<thead>
+    <th>#</th>
+    <th>nom</th>
+    <th>description</th>
+   
+    <th colspan="2">Actions</th>
+</thead>
+
+<tbody>
+    {% for x in equipes %}
+    <tr>
+        <td>{{x.id}}</td>
+        <td>{{x.nom}}</td>
+        <td>{{x.description}}</td>
+         <td> <a href="/equipe/show/{{x.id}}">Consulter</a> </td>
+         <td> <a href="/equipe/edit/{{x.id}}">Modifier</a> </td>
+        <td> <a href="/equipe/delete/{{x.id}}">Supprimer</a> </tr>
+    </tr>
+    {% endfor %}
+   
+</tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+<h1><a href="/equipe/add">Créer un equipe</a></h1>
+
+
+<br><br>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PlayerController!{% endblock %}
+
+{% block body %}
+ 
+
+
+<table border="1" >
+<thead>
+    <th>#</th>
+    <th>nom</th>
+    <th>prenom</th>
+    <th>numero</th>
+    <th>Equipe</th>
+    <th>crée le</th>
+    <th>Disponibilité</th>
+    <th colspan="2">Actions</th>
+</thead>
+
+<tbody>
+    {% for x in players %}
+    <tr>
+        <td>{{x.id}}</td>
+        <td>{{x.nom}}</td>
+        <td>{{x.prenom}}</td>
+        <td>{{x.numero}}</td>
+        <td>{{x.equipe.nom}}</td>
+        <td>{{x.createdat |date('Y-M-D  h:s')}}</td>
+        {% if x.avaible  == 1 %}
+             <td style="color: green;" >disponible</td>
+        {% else %}
+                     <td style="color: red;">non disponible</td>
+
+        {% endif %}
+       
+
+        <td> <a href="/player/edit/{{x.id}}">Modifier</a> </td>
+        <td> <a href="player/delete/{{x.id}}">Supprimer</a> </tr>
+    </tr>
+    {% endfor %}
+   
+</tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+<h1><a href="/player/add">Créer un joueur</a></h1>
+
+
+<br><br>
+{% endblock %}
